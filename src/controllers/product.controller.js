@@ -13,6 +13,15 @@ exports.getProduct = (req, res) => {
   res.json(product);
 };
 
+exports.filterProducts = (req, res) => {
+  const minPrice = req.query.min;
+  const maxPrice = req.query.max;
+  const category = req.query.category;
+
+  const filteredProducts = Product.filterProducts(minPrice, maxPrice, category);
+  res.status(200).json({ products: filteredProducts });
+};
+
 exports.addProduct = (req, res)=>{
     const { name, price, sizes } = req.body;
     const newProduct = {
