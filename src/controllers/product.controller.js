@@ -5,6 +5,14 @@ exports.getAllProducts = (req, res) => {
   res.json(products);
 };
 
+exports.getProduct = (req, res) => {
+  const productId = req.params.id;
+  console.log(productId)
+  const product = Product.getProductById(productId);
+  console.log(product);
+  res.json(product);
+};
+
 exports.addProduct = (req, res)=>{
     const { name, price, sizes } = req.body;
     const newProduct = {

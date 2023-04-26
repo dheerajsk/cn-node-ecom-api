@@ -5,9 +5,7 @@ const upload = require('../middlewares/fileUpload.middleware');
 
 router.get('/', productController.getAllProducts);
 
-router.get('/:id', (req, res) => {
-  // Logic to fetch a single product by its ID
-});
+router.get('/:id', productController.getProduct);
 
 router.post('/', upload.single('imageUrl'), productController.addProduct);
 

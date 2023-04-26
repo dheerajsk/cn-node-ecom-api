@@ -14,13 +14,19 @@ class Product {
       return product;
     }
 
+    static getProductById(id) {
+      const product = products.find((p) => p.id == id);
+      return product;
+    }  
+
     static getSampleProducts() {
         return products;
       }
       
   }
 
-  var products=[  new Product(1, 'Sample Product 1', 'This is a sample product.', 10.99, ['XS', 'S', 'M', 'L', 'XL']),
+  var products=[  
+    new Product(1, 'Sample Product 1', 'This is a sample product.', 10.99, ['XS', 'S', 'M', 'L', 'XL']),
       new Product(2, 'Sample Product 2', 'This is another sample product.', 15.99, ['M', 'L', 'XL']),
 ]
   
