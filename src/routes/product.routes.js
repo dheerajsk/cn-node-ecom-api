@@ -6,6 +6,7 @@ const upload = require('../middlewares/fileUpload.middleware');
 router.get('/', productController.getAllProducts);
 
 router.get('/filter', productController.filterProducts);
+router.post('/:productId/rate', productController.rateProduct);
 router.get('/:id', productController.getProduct);
 
 

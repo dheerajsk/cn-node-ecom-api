@@ -22,6 +22,20 @@ exports.filterProducts = (req, res) => {
   res.status(200).json({ products: filteredProducts });
 };
 
+exports.rateProduct = (req, res) => {
+  const { productId } = req.params;
+  const { rating } = req.body;
+
+  try{
+    Product.rateProduct(productId, 1, rating)
+  }catch(err){
+    console.log(err);
+    res.status(400).send(err)
+  }
+  
+  res.status(200).send();
+};
+
 exports.addProduct = (req, res)=>{
     const { name, price, sizes } = req.body;
     const newProduct = {

@@ -24,6 +24,31 @@ class Product {
         return products;
       }
 
+      static rateProduct(productId, userId, rating) {
+        // Find the product by productId
+        const product = Product.getProductById(productId);
+        if (!product) {
+          throw new Error('Product not found');
+        }
+      
+        // Check if the user has already rated the product
+        const existingRating = product.ratings && product.ratings.find(r => r.userId === userId);
+      
+        // If not, add the rating to the ratings array
+        if (!existingRating) {
+          product.ratings=[];
+          product.ratings.push({ userId, rating });
+        } else {
+          // If yes, update the existing rating
+          existingRating.rating = rating;
+        }
+      
+        // Save the product
+        const index = products.findIndex(p=> p.id==productId);
+        products[index]=product;
+        return product;
+      }
+
       static filterProducts(minPrice, maxPrice, category) {
         return products.filter(
           (product) =>
