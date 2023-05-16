@@ -3,6 +3,7 @@ const router = express.Router();
 const productController = require("../controllers/product.controller");
 const upload = require('../middlewares/fileUpload.middleware');
 
+
 router.get('/', productController.getAllProducts);
 
 router.get('/:id', (req, res) => {
